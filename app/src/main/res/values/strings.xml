@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Simulator of Quantum Circuits</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>
