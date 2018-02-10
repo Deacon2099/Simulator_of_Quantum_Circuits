@@ -1,3 +1,5 @@
+package com.atlunametultra.simulatorofquantumcircuits;
+
 class QuantumGate extends Matrix {
 	private BinaryFormOfState binaryForm;
 	private int totalQubits;
@@ -164,7 +166,7 @@ class QuantumGate extends Matrix {
 					for (int k=0; k<=this.totalColumns-1; k++){
 					result.Set(i,j,result.Get(i,j).Add(this.Get(i,k).MultiplyBy(register.Get(k,j))));
 					}
-					//System.out.println("["+i+","+j+"]:"+result.Get(i,j).ToString()); //uncomment for debug 
+					//System.out.println("["+i+","+j+"]:"+result.Get(i,j).ToNormalString()); //uncomment for debug
 				}
 			}
 		}

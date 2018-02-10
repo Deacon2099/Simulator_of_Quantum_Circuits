@@ -1,3 +1,5 @@
+package com.atlunametultra.simulatorofquantumcircuits;
+
 import java.lang.Math;
 
 class BinaryFormOfState {

@@ -2,5 +2,7 @@
     <string name="app_name">Simulator of Quantum Circuits</string>
 
     <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_button2">Not Important Background</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="dummy_button3">Some Text About Nothing</string>
 </resources>

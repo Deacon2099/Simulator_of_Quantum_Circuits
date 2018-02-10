@@ -1,4 +1,4 @@
-//import java.lang.Math;
+package com.atlunametultra.simulatorofquantumcircuits;//import java.lang.Math;
 
 class QuantumCircuit {
 	private int circuitSchematic[][];

@@ -1,3 +1,5 @@
+package com.atlunametultra.simulatorofquantumcircuits;
+
 import java.lang.Math;
 
 class Matrix {
@@ -24,7 +26,7 @@ class Matrix {
 			for (int j=0; j<=totalColumns-1; j++){
 				innerArray[i][j]= new Complex (0.0f,0.0f);
 				
-			//System.out.println("["+i+","+j+"]:"+innerArray[i][j].ToString()); //uncomment for debug 
+			//System.out.println("["+i+","+j+"]:"+innerArray[i][j].ToNormalString()); //uncomment for debug
 			}
 		}
 	}
@@ -37,7 +39,7 @@ class Matrix {
 				else
 					innerArray[i][j]= new Complex (0.0f,0.0f);
 				
-			//System.out.println("["+i+","+j+"]:"+innerArray[i][j].ToString()); //uncomment for debug 
+			//System.out.println("["+i+","+j+"]:"+innerArray[i][j].ToNormalString()); //uncomment for debug
 			}
 		}
 	}
@@ -59,7 +61,7 @@ class Matrix {
 			for (int j=0; j<=totalColumns-1; j++){
 				result.Set(i,j,this.Get(i,j).Add(mat1.Get(i,j)));
 				
-			//System.out.println("["+i+","+j+"]:"+result.Get(i,j).ToString()); //uncomment for debug 
+			//System.out.println("["+i+","+j+"]:"+result.Get(i,j).ToNormalString()); //uncomment for debug
 			}
 		}
 		return result;
@@ -71,7 +73,7 @@ class Matrix {
 			for (int j=0; j<=totalColumns-1; j++){
 				result.Set(i,j,this.Get(i,j).Substract(mat1.Get(i,j)));
 				
-			//System.out.println("["+i+","+j+"]:"+result.Get(i,j).ToString()); //uncomment for debug 
+			//System.out.println("["+i+","+j+"]:"+result.Get(i,j).ToNormalString()); //uncomment for debug
 			}
 		}
 		return result;
@@ -89,7 +91,7 @@ class Matrix {
 					for (int k=0; k<=this.totalColumns-1; k++){
 					result.Set(i,j,result.Get(i,j).Add(this.Get(i,k).MultiplyBy(mat1.Get(k,j))));
 					}
-					//System.out.println("["+i+","+j+"]:"+result.Get(i,j).ToString()); //uncomment for debug 
+					//System.out.println("["+i+","+j+"]:"+result.Get(i,j).ToNormalString()); //uncomment for debug
 				}
 			}
 		}
@@ -122,7 +124,7 @@ class Matrix {
 		for (int i=0; i<totalRows; i++){
 			System.out.print("["+i+"]"); 
 			for (int j=0; j<totalColumns; j++){
-			System.out.print(" ["+this.Get(i,j).ToString()+"]");
+			System.out.print(" ["+this.Get(i,j).ToNormalString()+"]");
 			}
 			System.out.println(" ");
 		} 

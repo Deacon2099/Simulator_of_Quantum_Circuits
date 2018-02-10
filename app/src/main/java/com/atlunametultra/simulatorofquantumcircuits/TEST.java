@@ -1,3 +1,5 @@
+package com.atlunametultra.simulatorofquantumcircuits;
+
 class TEST {
 	public static void main (String args[]) {
 	try{
@@ -129,14 +131,14 @@ class TEST {
 			errorCounter++;}
 
 		//test 12
-		System.out.println("   test 12: Checking ToString for complex number. Expecting (3.0-2.0i)");
+		System.out.println("   test 12: Checking ToNormalString for complex number. Expecting (3.0-2.0i)");
 		Complex t12complex = new Complex(3.0f, -2.0f);
-		if(t12complex.ToString().equals(3.0f+""+(-2.0f)+"i"))
+		if(t12complex.ToNormalString().equals(3.0f+""+(-2.0f)+"i"))
 			PASSED();
 		else{
 			NOTPASSED();
 			errorCounter++;
-			System.out.println(t12complex.ToString());}
+			System.out.println(t12complex.ToNormalString());}
 			
 		//test 13
 		System.out.println("   test 13: Checking ToPolarString for complex number. Expecting 3.6055512exp^(-0.5880026)i");
@@ -153,7 +155,7 @@ class TEST {
 		innerErrorCounter=0;
 		for (int i=0; i<=4; i++){
 			for (int j=0; j<=4; j++){
-				//System.out.println("["+i+","+j+"]:"+t14matrix.Get(i,j).ToString()); //uncomment for debug 
+				//System.out.println("["+i+","+j+"]:"+t14matrix.Get(i,j).ToNormalString()); //uncomment for debug
 				if(t14matrix.Get(i,j).GetRe()==0.0f & t14matrix.Get(i,j).GetIm()==0.0f);
 				else
 					innerErrorCounter++;					
@@ -172,7 +174,7 @@ class TEST {
 		innerErrorCounter=0;
 		for (int i=0; i<=4; i++){
 			for (int j=0; j<=4; j++){
-				//System.out.println("["+i+","+j+"]:"+t15matrix.Get(i,j).ToString()); //uncomment for debug 
+				//System.out.println("["+i+","+j+"]:"+t15matrix.Get(i,j).ToNormalString()); //uncomment for debug
 				if(i==j){
 					if(t15matrix.Get(i,j).GetRe()==1.0f & t15matrix.Get(i,j).GetIm()==0.0f);
 					else
@@ -196,7 +198,7 @@ class TEST {
 		innerErrorCounter=0;
 		for (int i=0; i<=4; i++){
 			for (int j=0; j<=6; j++){
-				//System.out.println("["+i+","+j+"]:"+t16matrix.Get(i,j).ToString()); //uncomment for debug 
+				//System.out.println("["+i+","+j+"]:"+t16matrix.Get(i,j).ToNormalString()); //uncomment for debug
 				if(t16matrix.Get(i,j).GetRe()==0.0f & t16matrix.Get(i,j).GetIm()==0.0f);
 				else
 					innerErrorCounter++;					

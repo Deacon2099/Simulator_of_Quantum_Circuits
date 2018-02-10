@@ -1,3 +1,5 @@
+package com.atlunametultra.simulatorofquantumcircuits;
+
 class QuantumRegister extends Matrix {
 
 	public QuantumRegister(int totalQubits){

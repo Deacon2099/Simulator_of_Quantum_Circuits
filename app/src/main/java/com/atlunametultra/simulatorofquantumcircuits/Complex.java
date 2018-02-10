@@ -1,3 +1,5 @@
+package com.atlunametultra.simulatorofquantumcircuits;
+
 import java.lang.Math;
 
 class Complex {
@@ -71,8 +73,8 @@ class Complex {
 			else
 				return (float)Math.atan((im)/(re));
 	}
-	
-	public String ToString(){
+
+	public String ToNormalString(){
 		if(im>=0)
 			return (re+0.0f)+"+"+(im+0.0f)+"i"; //"+0.0f" is to avoid displaying "-0.0f" because -0.0f+0.0f=0.0f
 		else
