@@ -6,23 +6,15 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by Denzil on 2018-02-08.
+ * Created by Deacon2099 on 2018-03-04.
  */
 public class QuantumCircuitTest {
-    @Before
-    public void setUp() throws Exception {
-    }
-
     @Test
-    public void addGate() throws Exception {
+    public void circuitConstructorForThreeQubitsAndWithStateFive() throws Exception {
+        QuantumCircuit testQcircuit = new QuantumCircuit(3,5);
+        assertEquals(0.0f, testQcircuit.initialRegister.Get(0,0).GetRe(), 0.0f);
+        assertEquals(0.0f, testQcircuit.initialRegister.Get(0,0).GetIm(), 0.0f);
+        assertEquals(1.0f, testQcircuit.initialRegister.Get(5,0).GetRe(), 0.0f);
+        assertEquals(0.0, testQcircuit.initialRegister.Get(5,0).GetIm(), 0.0f);
     }
-
-    @Test
-    public void calculate() throws Exception {
-    }
-
-    @Test
-    public void getResult() throws Exception {
-    }
-
 }
