@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".quantumscreen"
+            android:name=".welcome_screen"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:theme="@style/FullscreenTheme">
@@ -19,6 +19,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".circuit_setup"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:parentActivityName=".welcome_screen"
+            android:theme="@style/FullscreenTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.atlunametultra.simulatorofquantumcircuits.welcome_screen" />
         </activity>
     </application>
 

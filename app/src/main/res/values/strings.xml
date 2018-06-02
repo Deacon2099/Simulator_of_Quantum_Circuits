@@ -2,7 +2,16 @@
     <string name="app_name">Simulator of Quantum Circuits</string>
 
     <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_button2">Not Important Background</string>
+    <string name="welcome_background_text">Press Here to Begin…</string>
+    <string name="circ_setup_description">CIRCUIT SETUP</string>
+    <string name="circ_setup_number_of_qubits">Number of Qubits</string>
+    <string name="circ_setup_initial_state">Initial State</string>
+    <string name="circ_setup_create_button">CREATE</string>
+
+    <string name="title_activity_circuit_setup">circuit_setup</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="dummy_button3">Some Text About Nothing</string>
+
+    <string name="title_activity_some_fullscreen">someFullscreenActivity</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
 </resources>

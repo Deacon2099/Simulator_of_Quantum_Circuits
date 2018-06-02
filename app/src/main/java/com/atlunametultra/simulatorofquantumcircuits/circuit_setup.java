@@ -7,12 +7,17 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.MenuItem;
+import android.support.v4.app.NavUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class quantumscreen extends AppCompatActivity {
+public class circuit_setup extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -32,6 +37,9 @@ public class quantumscreen extends AppCompatActivity {
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler();
     private View mContentView;
+    private View mCreateButton;
+    private int numberOfqubits;
+    private int initialState;
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
         @Override
@@ -49,7 +57,7 @@ public class quantumscreen extends AppCompatActivity {
                     | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         }
     };
-    private View mControlsView;
+   // private View mControlsView;
     private final Runnable mShowPart2Runnable = new Runnable() {
         @Override
         public void run() {
@@ -58,10 +66,11 @@ public class quantumscreen extends AppCompatActivity {
             if (actionBar != null) {
                 actionBar.show();
             }
-            mControlsView.setVisibility(View.VISIBLE);
+          //  mControlsView.setVisibility(View.VISIBLE);
         }
     };
     private boolean mVisible;
+    private Integer states[];
     private final Runnable mHideRunnable = new Runnable() {
         @Override
         public void run() {
@@ -87,12 +96,15 @@ public class quantumscreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_quantumscreen);
+        setContentView(R.layout.activity_circuit_setup);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         mVisible = true;
-        mControlsView = findViewById(R.id.fullscreen_content_controls);
-        mContentView = findViewById(R.id.fullscreen_content);
-
+        mContentView = findViewById(R.id.setup_content);
+        mCreateButton = findViewById(R.id.create_circuit_button);
 
         // Set up the user interaction to manually show or hide the system UI.
         mContentView.setOnClickListener(new View.OnClickListener() {
@@ -102,10 +114,41 @@ public class quantumscreen extends AppCompatActivity {
             }
         });
 
+        mCreateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                QuantumCircuit theQcircuit = new QuantumCircuit(numberOfqubits,initialState);
+                theQcircuit.AddGate(0,1,2); //(targetqubit,step,gateId)
+                theQcircuit.AddGate(0,2,4); //(targetqubit,step,gateId)
+                theQcircuit.Calculate();
+            }
+        });
+
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+        findViewById(R.id.create_circuit_button).setOnTouchListener(mDelayHideTouchListener);
+
+
+        Spinner number_of_qubits_spinner=(Spinner) findViewById(R.id.number_of_qubits_spinner);
+        Integer[] qubits = new Integer[]{1,2,3,4,5,6,7,8};
+        ArrayAdapter<Integer> adapterQubit = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item, qubits);
+        number_of_qubits_spinner.setAdapter(adapterQubit);
+        numberOfqubits=1;
+
+        number_of_qubits_spinner.setOnItemSelectedListener(this);
+
+        Spinner initial_state_spinner=(Spinner) findViewById(R.id.initial_state_spinner);
+        int totalStates=(int)Math.pow(2,qubits[0]);
+        states= new Integer[totalStates];
+        for(int i=0; i<totalStates; i++) {
+            states[i]=i;
+        }
+        ArrayAdapter<Integer> adapterState = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item, states);
+        initial_state_spinner.setAdapter(adapterState);
+        initialState=1;
+
+        initial_state_spinner.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -116,6 +159,17 @@ public class quantumscreen extends AppCompatActivity {
         // created, to briefly hint to the user that UI controls
         // are available.
         delayedHide(100);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            // This ID represents the Home or Up button.
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void toggle() {
@@ -132,7 +186,7 @@ public class quantumscreen extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
-        mControlsView.setVisibility(View.GONE);
+       // mControlsView.setVisibility(View.GONE);
         mVisible = false;
 
         // Schedule a runnable to remove the status and navigation bar after a delay
@@ -159,5 +213,35 @@ public class quantumscreen extends AppCompatActivity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+        if(adapterView.getId() == R.id.number_of_qubits_spinner)
+        {
+            int qubits = Integer.parseInt(adapterView.getItemAtPosition(position).toString());
+            int totalStates=(int)Math.pow(2,qubits);
+            states= new Integer[totalStates];
+            for(int i=0; i<totalStates; i++) {
+                states[i]=i;
+            }
+            ArrayAdapter<Integer> adapterState = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item, states);
+            Spinner initial_state_spinner=(Spinner) findViewById(R.id.initial_state_spinner);
+            initial_state_spinner.setAdapter(adapterState);
+
+            numberOfqubits=qubits;
+            initialState=states[0];
+        }
+
+        if(adapterView.getId() == R.id.initial_state_spinner)
+        {
+            initialState = Integer.parseInt(adapterView.getItemAtPosition(position).toString());
+        }
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

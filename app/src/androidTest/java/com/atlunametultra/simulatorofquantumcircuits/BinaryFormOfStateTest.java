@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by Deacon2099 on 2018-02-08.
+ * Created by Deacon2099 on 2018-03-02.
  */
 public class BinaryFormOfStateTest {
 
