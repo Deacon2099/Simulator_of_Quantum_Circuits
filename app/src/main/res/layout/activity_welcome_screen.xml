@@ -1,17 +1,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0099cc"
     tools:context="com.atlunametultra.simulatorofquantumcircuits.welcome_screen">
 
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
-
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -21,13 +14,13 @@
     </FrameLayout>
 
     <TextView
-        android:id="@+id/fullscreen_content"
+        android:id="@+id/welcome_screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:keepScreenOn="true"
         android:text="@string/welcome_background_text"
-        android:textColor="#33b5e5"
+        android:textColor="@android:color/holo_blue_bright"
         android:textSize="50sp"
         android:textStyle="bold"
         android:visibility="visible" />

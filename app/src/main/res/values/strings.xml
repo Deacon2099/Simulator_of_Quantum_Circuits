@@ -2,7 +2,7 @@
     <string name="app_name">Simulator of Quantum Circuits</string>
 
     <string name="dummy_button">Dummy Button</string>
-    <string name="welcome_background_text">Press Here to Begin…</string>
+    <string name="welcome_background_text">Quantum Circuit Simulator</string>
     <string name="circ_setup_description">CIRCUIT SETUP</string>
     <string name="circ_setup_number_of_qubits">Number of Qubits</string>
     <string name="circ_setup_initial_state">Initial State</string>
@@ -10,6 +10,11 @@
 
     <string name="title_activity_circuit_setup">circuit_setup</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="add_gates_description">ADD GATES</string>
+    <string name="add_gates_choose_qubit">For Qubit</string>
+    <string name="add_gates_choose_gate_type">Type of Gate</string>
+    <string name="add_gates_add_gate_button">ADD GATE</string>
 
     <string name="title_activity_some_fullscreen">someFullscreenActivity</string>
 
