@@ -29,31 +29,30 @@ class Complex {
 		return im;
 	}
 
+	public boolean isZero() {
+		return (re + 0.0f) == 0.0f && (im + 0.0f) == 0.0f;
+	}
+
 	public Complex Negation(){
-		Complex result= new Complex(-re,-im);
-		return result;
+		return new Complex(-re,-im);
 	}
 	
 	public Complex Add(Complex com1){
-		Complex result= new Complex(re + com1.GetRe(),im + com1.GetIm());
-		return result;
+		return new Complex(re + com1.GetRe(),im + com1.GetIm());
 	}
 	
 	public Complex Substract(Complex com1){
-		Complex result= new Complex(re - com1.GetRe(),im - com1.GetIm());
-		return result;
+		return new Complex(re - com1.GetRe(),im - com1.GetIm());
 	}
 
 	public Complex MultiplyBy(Complex com1){
 		float solveRe = (this.GetRe()*com1.GetRe())-(this.GetIm()*com1.GetIm());
 		float solveIm = (this.GetRe()*com1.GetIm())+(this.GetIm()*com1.GetRe());
-		Complex result= new Complex(solveRe,solveIm);
-		return result;
+		return new Complex(solveRe,solveIm);
 	}
 	
 	public Complex MultiplyBy(float number){
-		Complex result= new Complex(this.GetRe()*number,im);
-		return result;
+		return new Complex(this.GetRe()*number,im);
 	}
 	
 	public float Mod(){
