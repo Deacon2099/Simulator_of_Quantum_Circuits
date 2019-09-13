@@ -1,9 +1,10 @@
 package com.atlunametultra.simulatorofquantumcircuits;
 
-import java.lang.Math;
+import java.util.HashMap;
+import java.util.Map;
 
 class Matrix {
-	private Complex innerArray[][];
+	private Map<Integer, Complex> innerMap;
 	protected int totalRows;
 	protected int totalColumns;
 
@@ -11,47 +12,34 @@ class Matrix {
 	public Matrix(int n){
 		totalRows=n;
 		totalColumns=n;
-		FillAllInnerArrayWithZeros();
+		innerMap = new HashMap<>();
 	}
 
 	public Matrix(int n, int m){
 		totalRows=n;
 		totalColumns=m;
-		FillAllInnerArrayWithZeros();
-	}
-	
-	private void FillAllInnerArrayWithZeros (){
-		innerArray = new Complex [totalRows][totalColumns];
-		for (int i=0; i<=totalRows-1; i++){
-			for (int j=0; j<=totalColumns-1; j++){
-				innerArray[i][j]= new Complex (0.0f,0.0f);
-				
-			//System.out.println("["+i+","+j+"]:"+innerArray[i][j].ToNormalString()); //uncomment for debug
-			}
-		}
+		innerMap = new HashMap<>();
 	}
 	
 	public void IdentityMatrix (){
 		for (int i=0; i<=totalRows-1; i++){
 			for (int j=0; j<=totalColumns-1; j++){
-				if(i==j)
-					innerArray[i][j]= new Complex (1.0f,0.0f);
-				else
-					innerArray[i][j]= new Complex (0.0f,0.0f);
-				
-			//System.out.println("["+i+","+j+"]:"+innerArray[i][j].ToNormalString()); //uncomment for debug
+			    int matrixIndex = MatrixIndex(i, j);
+				if(i==j) {
+                    innerMap.put(matrixIndex, new Complex (1.0f,0.0f));
+                }
+				else {
+                    innerMap.put(matrixIndex, new Complex (0.0f,0.0f));
+                }
 			}
 		}
 	}
 	
 	public void SwitchRow(int rowA, int rowB){
-		float temporaryRe;
-		float temporaryIm;
 		for (int i=0; i<=totalColumns-1; i++){
-			temporaryRe=innerArray[rowA][i].GetRe();
-			temporaryIm=innerArray[rowA][i].GetIm();
-			innerArray[rowA][i]=innerArray[rowB][i];
-			innerArray[rowB][i]= new Complex(temporaryRe,temporaryIm);
+		    Complex temporaryComplex = Get(rowA, i);
+		    Set(rowA, i, Get(rowB, i));
+		    Set(rowB, i, temporaryComplex);
 		}
 	}
 
@@ -60,8 +48,6 @@ class Matrix {
 		for (int i=0; i<=totalRows-1; i++){
 			for (int j=0; j<=totalColumns-1; j++){
 				result.Set(i,j,this.Get(i,j).Add(mat1.Get(i,j)));
-				
-			//System.out.println("["+i+","+j+"]:"+result.Get(i,j).ToNormalString()); //uncomment for debug
 			}
 		}
 		return result;
@@ -72,8 +58,6 @@ class Matrix {
 		for (int i=0; i<=totalRows-1; i++){
 			for (int j=0; j<=totalColumns-1; j++){
 				result.Set(i,j,this.Get(i,j).Substract(mat1.Get(i,j)));
-				
-			//System.out.println("["+i+","+j+"]:"+result.Get(i,j).ToNormalString()); //uncomment for debug
 			}
 		}
 		return result;
@@ -91,7 +75,6 @@ class Matrix {
 					for (int k=0; k<=this.totalColumns-1; k++){
 					result.Set(i,j,result.Get(i,j).Add(this.Get(i,k).MultiplyBy(mat1.Get(k,j))));
 					}
-					//System.out.println("["+i+","+j+"]:"+result.Get(i,j).ToNormalString()); //uncomment for debug
 				}
 			}
 		}
@@ -103,13 +86,27 @@ class Matrix {
 	}  
 	
 	public Complex Get(int row, int column){
-		return innerArray[row][column];
+        int matrixIndex = MatrixIndex(row, column);
+		if(innerMap.containsKey(matrixIndex))
+		    return innerMap.get(matrixIndex);
+		else
+		    return new Complex(0.0f, 0.0f);
 	}
 	
 	public void Set(int row, int column, Complex value){
-		innerArray[row][column]=value;
+        int matrixIndex = MatrixIndex(row, column);
+		if(innerMap.containsKey(matrixIndex))
+		    innerMap.remove(matrixIndex);
+        if(!value.isZero())
+            innerMap.put(matrixIndex, value);
 	}
-	
+
+	private int MatrixIndex(int row, int column)
+    {
+        return (totalRows*row) + column;
+    }
+
+
 	public void DebugPrintMatrixDetailsOnlyRealValues(){
 		for (int i=0; i<totalRows; i++){
 			System.out.print("["+i+"]"); 
