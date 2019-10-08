@@ -151,7 +151,11 @@ class QuantumGate extends Matrix {
 			}
 		}
 	}
-	
+
+	public void Swap (int firstTargetQubit, int secondTargetQubit, int state) {
+        if(binaryForm.QubitIsOneInState(firstTargetQubit, state) !=  binaryForm.QubitIsOneInState(secondTargetQubit, state) && (state) < totalColumns / 2)
+            SwitchRow(state,totalRows - 1 - state);
+	}
 	
 	public QuantumRegister MultiplyBy (QuantumRegister register){
 		QuantumRegister result = new QuantumRegister(totalQubits);

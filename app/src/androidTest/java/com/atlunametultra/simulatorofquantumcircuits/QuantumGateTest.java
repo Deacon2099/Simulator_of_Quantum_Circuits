@@ -71,5 +71,29 @@ public class QuantumGateTest {
         assertEquals(oneDividedBySqrtOfTwo, testQGate.Get(1,1).GetRe(), 0.0f);
     }
 
+    @Test
+    public void gateSwapTest() throws Exception {
+        QuantumGate testQGate = new QuantumGate(2);
+        testQGate.Swap(0,1, 0);
+        testQGate.Swap(0,1, 1);
+        testQGate.Swap(0,1, 2);
+        testQGate.Swap(0,1, 3);
+        assertEquals(1.0f, testQGate.Get(0,0).GetRe(), 0.0f);
+        assertEquals(0.0f, testQGate.Get(0,1).GetRe(), 0.0f);
+        assertEquals(0.0f, testQGate.Get(0,2).GetRe(), 0.0f);
+        assertEquals(0.0f, testQGate.Get(0,3).GetRe(), 0.0f);
+        assertEquals(0.0f, testQGate.Get(1,0).GetRe(), 0.0f);
+        assertEquals(0.0f, testQGate.Get(1,1).GetRe(), 0.0f);
+        assertEquals(1.0f, testQGate.Get(1,2).GetRe(), 0.0f);
+        assertEquals(0.0f, testQGate.Get(1,3).GetRe(), 0.0f);
+        assertEquals(0.0f, testQGate.Get(2,0).GetRe(), 0.0f);
+        assertEquals(1.0f, testQGate.Get(2,1).GetRe(), 0.0f);
+        assertEquals(0.0f, testQGate.Get(2,2).GetRe(), 0.0f);
+        assertEquals(0.0f, testQGate.Get(2,3).GetRe(), 0.0f);
+        assertEquals(0.0f, testQGate.Get(3,0).GetRe(), 0.0f);
+        assertEquals(0.0f, testQGate.Get(3,1).GetRe(), 0.0f);
+        assertEquals(0.0f, testQGate.Get(3,2).GetRe(), 0.0f);
+        assertEquals(1.0f, testQGate.Get(3,3).GetRe(), 0.0f);
+    }
 
 }
