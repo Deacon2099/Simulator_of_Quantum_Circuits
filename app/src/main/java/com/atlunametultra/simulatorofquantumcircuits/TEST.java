@@ -446,7 +446,7 @@ class TEST {
 		//t30qcirc.circuitGates.DebugPrintMatrixDetailsComplexValues();//uncomment for debug	
 		//System.out.println("Final Register:"); //uncomment for debug		
 		//t30qcirc.finalRegister.DebugPrintMatrixDetailsComplexValues();//uncomment for debug	
-		if(t30qcirc.circuitGates.Get(0,0).GetRe()==0.70710677f & t30qcirc.circuitGates.Get(1,0).GetRe()==0.70710677f & t30qcirc.circuitGates.Get(0,1).GetRe()==0.70710677f & t30qcirc.circuitGates.Get(1,1).GetRe()==-0.70710677f)
+		if(t30qcirc.GetCircuitGates().Get(0,0).GetRe()==0.70710677f & t30qcirc.GetCircuitGates().Get(1,0).GetRe()==0.70710677f & t30qcirc.GetCircuitGates().Get(0,1).GetRe()==0.70710677f & t30qcirc.GetCircuitGates().Get(1,1).GetRe()==-0.70710677f)
 			PASSED();
 		else{
 			NOTPASSED();
@@ -465,7 +465,7 @@ class TEST {
 		//t31qcirc.circuitGates.DebugPrintMatrixDetailsComplexValues();//uncomment for debug	
 		//System.out.println("Final Register:"); //uncomment for debug		
 		//t31qcirc.finalRegister.DebugPrintMatrixDetailsComplexValues();//uncomment for debug	
-		if(t31qcirc.circuitGates.Get(0,0).GetRe()==0.70710677f & t31qcirc.circuitGates.Get(1,0).GetRe()==0.70710677f & t31qcirc.circuitGates.Get(0,1).GetRe()==-0.70710677f & t31qcirc.circuitGates.Get(1,1).GetRe()==0.70710677f)
+		if(t31qcirc.GetCircuitGates().Get(0,0).GetRe()==0.70710677f & t31qcirc.GetCircuitGates().Get(1,0).GetRe()==0.70710677f & t31qcirc.GetCircuitGates().Get(0,1).GetRe()==-0.70710677f & t31qcirc.GetCircuitGates().Get(1,1).GetRe()==0.70710677f)
 			PASSED();
 		else{
 			NOTPASSED();
@@ -485,7 +485,7 @@ class TEST {
 		//t32qcirc.circuitGates.DebugPrintMatrixDetailsComplexValues();//uncomment for debug	
 		//System.out.println("Final Register:"); //uncomment for debug		
 		//t32qcirc.finalRegister.DebugPrintMatrixDetailsComplexValues();//uncomment for debug	
-		if(t32qcirc.circuitGates.Get(0,0).GetIm()==0.70710677f & t32qcirc.circuitGates.Get(1,0).GetIm()==-0.70710677f & t32qcirc.circuitGates.Get(0,1).GetIm()==-0.70710677f & t32qcirc.circuitGates.Get(1,1).GetIm()==-0.70710677f)
+		if(t32qcirc.GetCircuitGates().Get(0,0).GetIm()==0.70710677f & t32qcirc.GetCircuitGates().Get(1,0).GetIm()==-0.70710677f & t32qcirc.GetCircuitGates().Get(0,1).GetIm()==-0.70710677f & t32qcirc.GetCircuitGates().Get(1,1).GetIm()==-0.70710677f)
 			PASSED();
 		else{
 			NOTPASSED();
